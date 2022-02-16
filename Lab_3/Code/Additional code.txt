@@ -1,0 +1,43 @@
+    except(IOError, socket.error) as e:
+        #print ("I/O error({0}): {1}").format(e.errno, e.strerror)
+        #print("I/O error(", e.errno, "): ", e.strerror)
+        print(e.strerror)
+        #print("Ошибка IOError")
+        #print("Ошибка вызвана соединением сокета")
+    except(ftplib.error_reply) as e:
+        print(e.strerror)
+        #print("Ошибка error_reply")
+        #print("Исключение возникает при получении от сервера неожиданного ответа")
+    except(ftplib.error_temp) as e:
+        print(e.strerror)
+        #print("Ошибка error_temp")
+        #print("Исключение возникает, когда получен код ошибки, обозначающий временную ошибку")
+        #print("Вероятно, время ожидания ответа от сервера истекло")
+    except(ftplib.error_perm) as e:
+        print(e.strerror)
+        #print("Ошибка error_perm")
+        #print("Данное исключение возникает, когда от сервера получен ответ, который не соответствует спецификациям ответа протокола передачи файлов")
+        #print("Возможно, данный сервер предоставляет только анонимное подключение или вы ввели неверный логин и/или пароль")
+    except(ftplib.error_proto) as e:
+        print(e.strerror)
+        #print("Ошибка error_proto")
+        #print("Исключение возникает, когда от сервера получен ответ, который не соответствует спецификациям ответа протокола передачи файлов")
+
+
+    #def Check_connection_to_FTP_server(ftp_server, list_of_items):
+    #    retry = True
+    #    while (retry):
+    #        try:
+    #            conn = FTP(ftp_server)
+    #            conn.connect()
+    #            for item in list_of_items:
+    #                myfile = open('filename', 'w')
+    #                conn.retrbinary('stuff', myfile)   
+    #                ### do some parsing ###
+
+    #            retry = False
+
+    #        except IOError as e:
+    #            print(e.strerror)
+    #            print ("Retrying...")
+    #            retry = True
